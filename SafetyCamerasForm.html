@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<title>Intersection Safety Cameras</title>
+	</head>
+
+	<body>
+        <div class="p-2 bg-dark">
+            <h1>Search Intersection Safety Cameras</h1>
+        </div>		
+
+		<form class="camera_form">
+			<div>
+				<label for="camera_id">Camera ID:</label>
+				<input type="text" id="camera_id" name="camera_id"
+					data-promptMessage="Please enter the camera ID that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchCameraId(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="quadrant">Quadrant Location:</label>
+				<input type="text" id="quadrant" name="quadrant" placeholder="ex: SE, NW"
+					data-promptMessage="Please enter the quadrant location that you want to find (ex: SE, NW)"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchQuadrantLocation(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="location">Detail Location:</label>
+				<input type="text" id="location" name="location"
+					data-promptMessage="Please enter the location that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchDetailLocation(this.value)">
+				<span>(contains)</span>
+			</div>
+
+			<div>
+				<label for="community_name">Community Name:</label>
+				<input type="text" id="community_name" name="community_name"
+					data-promptMessage="Please enter the community name that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchCommunityName(this.value)">
+				<span>(starts With)</span>
+			</div>
+		</form>
+
+		<div id="output_field" class="hidden">
+			<h3 id="search_value"></h3>
+
+			<div>
+				<template id="card_template">
+					<div class="card">
+						<div class="match_number">
+							<p>Match Number:</p>
+							<span class="card_id"></span>
+						</div>
+
+						<div>
+							<p>Camera ID:</p>
+							<span class="card_camera_id"></span>
+						</div>
+
+						<div>
+							<p>Location:</p>
+							<span class="card_detail_location"></span>
+						</div>
+
+						<div>
+							<p>Quadrant:</p>
+							<span class="card_quadrant_location"></span>
+						</div>
+
+						<div>
+							<p>Community:</p>
+							<span class="card_community_name"></span>
+						</div>
+							
+						<div class="link_map"></div>
+					</div>
+				</template>
+
+                <div class="row">
+                    <div class="col-md-5" id="cards"></div>
+                </div>
+			</div>
+		</div>
+	</body>
+</html>
