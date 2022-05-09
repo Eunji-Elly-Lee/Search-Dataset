@@ -208,7 +208,7 @@ function CalculateTopPosition(promptID, rectangleOfInput, messageText) {
 
     if(promptElement && promptElement.innerHTML !== undefined && promptElement.style !== undefined) {        
         var rectangleOfPrompt = promptElement.getBoundingClientRect();        
-        var topOffset = rectangleOfInput.top - (rectangleOfInput.height + rectangleOfPrompt.height) + window.scrollY - 35;
+        var topOffset = rectangleOfInput.top - (rectangleOfInput.height + rectangleOfPrompt.height) + window.scrollY - 170;
         var leftOffset = rectangleOfInput.left + rectangleOfInput.width + window.scrollX - 15;
         
         promptElement.innerHTML = messageText;
