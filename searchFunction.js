@@ -1,3 +1,5 @@
+var dataSet = [];
+
 function SearchCameraId(cameraId) { 
 	SetElementInnerHTML("search_value", "Search by Camera ID"); 
 	ToggleClassState("output_field", "hidden", false); 
