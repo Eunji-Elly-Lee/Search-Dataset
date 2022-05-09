@@ -169,3 +169,53 @@ function ToggleClassState(id, toggleClass, force) {
         console.log(`Cannot find element "${id}" to alter class "${toggleClass}"`);
     }
 }
+
+function HasFocus(id, promptID) { 
+    var inputElement = document.getElementById(id);
+
+    if(inputElement) {
+        var rectangleOfInput = inputElement.getBoundingClientRect(); 
+
+        if(rectangleOfInput && rectangleOfInput.top !== undefined) {
+            var messageText = inputElement.getAttribute("data-promptMessage");
+            
+            ToggleClassState(promptID, "hidden", false);
+            CalculateTopPosition(promptID, rectangleOfInput, messageText);
+        }
+    } else {
+        console.log("Could not find the id '" + id + "', so cannot focus on it");
+    }
+}
+
+function LostFocus(id, promptID) { 
+    var promptElement = document.getElementById(promptID);
+
+    if(promptElement) {
+        promptElement.style = "";
+
+        if(id) {
+            promptElement.innerHTML = "";
+        }
+
+        ToggleClassState(promptID, "hidden", true);
+    } else {
+        console.log("Could not find the help prompt with the id '" + promptID + "'");
+    }
+}
+
+function CalculateTopPosition(promptID, rectangleOfInput, messageText) { 
+    var promptElement = document.getElementById(promptID); 
+
+    if(promptElement && promptElement.innerHTML !== undefined && promptElement.style !== undefined) {        
+        var rectangleOfPrompt = promptElement.getBoundingClientRect();        
+        var topOffset = rectangleOfInput.top - (rectangleOfInput.height + rectangleOfPrompt.height) + window.scrollY - 35;
+        var leftOffset = rectangleOfInput.left + rectangleOfInput.width + window.scrollX - 15;
+        
+        promptElement.innerHTML = messageText;
+        promptElement.style.top = topOffset + "px";
+        promptElement.style.left = leftOffset + "px";
+    } else {
+        console.log("Could not find the help prompt with the id '" + promptID + "'" +
+        ", so cannot display it");
+    }
+}
