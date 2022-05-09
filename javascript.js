@@ -1,5 +1,3 @@
-var dataSet = [];
-
 window.addEventListener("load", InitializeWebpage, false);
 
 function InitializeWebpage() {    
@@ -218,4 +216,66 @@ function CalculateTopPosition(promptID, rectangleOfInput, messageText) {
         console.log("Could not find the help prompt with the id '" + promptID + "'" +
         ", so cannot display it");
     }
+}
+
+function SetElementInnerHTML(id, htmlFragment) {
+	var element = document.getElementById(id);
+
+	if(element && element.innerHTML !== undefined) {
+		element.innerHTML = htmlFragment;
+	} else {
+		console.log(`Could not find element id="${id}" on the web page`);
+	}
+}
+
+function GetNewTemplate(templateId, newTemplateId) {
+	var template = document.getElementById(templateId); 
+
+	if(template && template.content !== undefined) {
+		var newTemplate = null; 
+
+		for(let idx = 0; idx < template.content.childNodes.length; idx++) {
+			if(template.content.childNodes[idx].nodeType === 1) {
+				newTemplate = template.content.childNodes[idx].cloneNode(true);
+				
+                if(newTemplate) {
+					newTemplate.setAttribute("id", newTemplateId);
+
+					break;
+				}
+			}
+		}
+	} else {
+		console.log(`Could not find template id = ${templateId}`);
+	}
+
+	return newTemplate;
+}
+
+function SetTemplateElementValue(template, className, htmlFragment) {
+	var element = template.getElementsByClassName(className);
+
+	if(element && element.length > 0) {
+		element[0].innerHTML = htmlFragment;
+	} else {
+		console.log(`Could not find element id='${className}' on the template`);
+	}
+
+	return element;
+}
+
+function ClearTemplateCollection(id) {
+	var element = document.getElementById(id);
+    
+	if(element) {
+		element.innerHTML = "";
+	}
+}
+
+function AddTemplateToCollection(fieldId, template) {
+	var element = document.getElementById(fieldId);
+
+	if (element) {
+		element.appendChild(template);
+	}
 }
