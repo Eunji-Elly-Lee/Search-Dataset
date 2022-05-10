@@ -576,3 +576,184 @@ function SearchMaintainedBy(maintainedBy) {
 		}
 	}
 }
+
+function SearchID(id) {
+	SetElementInnerHTML("search_value", "Search by ID");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (id && id.length > 0) {
+		var searchingId; 
+		var matchNumber = 0;
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingId = obj.id;
+
+			if (searchingId == id) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_secondary_suite_id", obj.id);
+					SetTemplateElementValue(newCard, "card_address", obj.address);
+					SetTemplateElementValue(newCard, "card_community", obj.community);
+					SetTemplateElementValue(newCard, "card_inspection_date", obj.inspectiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_completion_date", obj.completiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_permit_number", obj.permitnumber);
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${id}'`);
+		}
+	}
+}
+
+function SearchAddress(address) {
+	SetElementInnerHTML("search_value", "Search by Address");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (address && address.length > 0) {
+		var searchingAddress; 
+		var matchNumber = 0;
+		address = address.toLowerCase();
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingAddress = obj.address.toLowerCase();
+
+			var foundAt = searchingAddress.indexOf(address);
+
+			if (foundAt > -1) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_secondary_suite_id", obj.id);
+					SetTemplateElementValue(newCard, "card_address", obj.address);
+					SetTemplateElementValue(newCard, "card_community", obj.community);
+					SetTemplateElementValue(newCard, "card_inspection_date", obj.inspectiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_completion_date", obj.completiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_permit_number", obj.permitnumber);
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${address}'`);
+		}
+	}
+}
+
+function SearchCommunity(community) {
+	SetElementInnerHTML("search_value", "Search by Community");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (community && community.length > 0) {
+		var searchingCommunity; 
+		var matchNumber = 0;
+		community = community.toLowerCase();
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingCommunity = obj.community.toLowerCase();
+
+			if (searchingCommunity.startsWith(community)) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_secondary_suite_id", obj.id);
+					SetTemplateElementValue(newCard, "card_address", obj.address);
+					SetTemplateElementValue(newCard, "card_community", obj.community);
+					SetTemplateElementValue(newCard, "card_inspection_date", obj.inspectiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_completion_date", obj.completiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_permit_number", obj.permitnumber);	
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${community}'`);
+		}
+	}
+}
+
+function SearchPermitNumber(permitNumber) {
+	SetElementInnerHTML("search_value", "Search by Permit Number");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (permitNumber && permitNumber.length > 0) {
+		var searchingPermitNumber; 
+		var matchNumber = 0;
+		permitNumber = permitNumber.toLowerCase();
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingPermitNumber = obj.permitnumber.toLowerCase();
+
+			if (searchingPermitNumber == permitNumber) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_secondary_suite_id", obj.id);
+					SetTemplateElementValue(newCard, "card_address", obj.address);
+					SetTemplateElementValue(newCard, "card_community", obj.community);
+					SetTemplateElementValue(newCard, "card_inspection_date", obj.inspectiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_completion_date", obj.completiondate.slice(0, 10));
+					SetTemplateElementValue(newCard, "card_permit_number", obj.permitnumber);	
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${permitNumber}'`);
+		}
+	}
+}
