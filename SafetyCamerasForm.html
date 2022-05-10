@@ -11,15 +11,6 @@
 
 		<form class="camera_form">
 			<div>
-				<label for="camera_id">Camera ID:</label>
-				<input type="text" id="camera_id" name="camera_id"
-					data-promptMessage="Please enter the camera ID that you want to find"
-					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
-					onkeyup="SearchCameraId(this.value)">
-				<span>(exact matchs)</span>
-			</div>
-
-			<div>
 				<label for="quadrant">Quadrant Location:</label>
 				<input type="text" id="quadrant" name="quadrant" placeholder="ex: SE, NW"
 					data-promptMessage="Please enter the quadrant location that you want to find (ex: SE, NW)"
@@ -59,13 +50,13 @@
 						</div>
 
 						<div>
-							<p class="camera_p">Camera ID:</p>
-							<span class="card_camera_id"></span>
+							<p class="camera_p">Location:</p>
+							<span class="card_detail_location"></span>
 						</div>
 
 						<div>
-							<p class="camera_p">Location:</p>
-							<span class="card_detail_location"></span>
+							<p class="camera_p">Direction:</p>
+							<span class="card_direction"></span>
 						</div>
 
 						<div>
