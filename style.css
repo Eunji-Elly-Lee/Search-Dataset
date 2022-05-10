@@ -72,6 +72,9 @@
     .playground_form label {
         width: 100px;
     }
+    .secondary_form label {
+        width: 108px;
+    }
     #output_field {
         width: 98%;
         margin: 15px auto;
@@ -98,10 +101,11 @@
         padding: 1px;
     }
     .camera_p {
-        width: 82px;
+        width: 84px;
     }
-    .building_p {
-        width: 108px;
+    .building_p,
+    .secondary_p {
+        width: 110px;
     }
     .playground_p {
         width: 101px;
