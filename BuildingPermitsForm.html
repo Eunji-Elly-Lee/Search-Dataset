@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<title>Building Permits</title>
+	</head>
+
+	<body>
+        <div class="p-2 bg-dark">
+            <h2>Search Building Permits</h2>
+        </div>		
+
+		<form class="building_form">
+			<div>
+				<label for="building_permit_number">Permit Number:</label>
+				<input type="text" id="building_permit_number" name="building_permit_number"
+					data-promptMessage="Please enter the permit number that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchBuildingPermitNumber(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="applied_date">Applied Date:</label>
+				<input type="text" id="applied_date" name="applied_date" placeholder="ex: 2021-04-01"
+					data-promptMessage="Please enter the applied date that you want to find (ex: 2021-04-01)"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchAppliedDate(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="permit_keyword">Permit Keyword:</label>
+				<input type="text" id="permit_keyword" name="permit_keyword"
+					data-promptMessage="Please enter the keyword that you want to find (permit type, class or group)"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchPermitKeyword(this.value)">
+				<span>(contains)</span>
+			</div>
+
+			<div>
+				<label for="building_address">Address:</label>
+				<input type="text" id="building_address" name="building_address"
+					data-promptMessage="Please enter the address that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchBuildingAddress(this.value)">
+				<span>(contains)</span>
+			</div>
+		</form>
+
+		<div id="output_field" class="hidden">
+			<h3 id="search_value"></h3>
+
+			<div>
+				<template id="card_template">
+					<div class="card col-md-5">
+						<div class="match_number">
+							<p>Match Number:</p>
+							<span class="card_id"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Permit Number:</p>
+							<span class="card_building_permit_number"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Applied Date:</p>
+							<span class="card_applied_date"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Permit Type:</p>
+							<span class="card_permit_type"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Permit Class:</p>
+							<span class="card_permit_class"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Class Group:</p>
+							<span class="card_permit_group"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Description:</p>
+							<span class="card_permit_description"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Project Cost:</p>
+							<span class="card_project_cost"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Address:</p>
+							<span class="card_building_address"></span>
+						</div>
+
+						<div>
+							<p class="building_p">Community:</p>
+							<span class="card_community_name"></span>
+						</div>
+							
+						<div class="link_map"></div>
+					</div>
+				</template>
+
+                <div class="row" id="cards"></div>            
+			</div>
+		</div>
+	</body>
+</html>
