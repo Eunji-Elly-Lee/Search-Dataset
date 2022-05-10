@@ -1,47 +1,5 @@
 var dataSet = [];
 
-function SearchCameraId(cameraId) { 
-	SetElementInnerHTML("search_value", "Search by Camera ID"); 
-	ToggleClassState("output_field", "hidden", false); 
-	ClearTemplateCollection("cards");
-
-	if (cameraId && cameraId.length > 0) {
-		var searchingCameraId;
-		var matchNumber = 0;
-        
-		for (var idx = 0; idx < dataSet.length; idx++) {
-			var obj = dataSet[idx];
-			searchingCameraId = obj.id;
-
-			if (searchingCameraId == cameraId) {
-				var newCardId = `card-${matchNumber}`;
-				var newCard = GetNewTemplate("card_template", newCardId);
-
-				if (newCard) {
-					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
-					SetTemplateElementValue(newCard, "card_camera_id", obj.id);
-					SetTemplateElementValue(newCard, "card_detail_location", obj.description);
-					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
-					SetTemplateElementValue(newCard, "card_community_name", obj.community);
-					SetTemplateElementValue(newCard, "link_map",
-					`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
-						View in Google Maps</a>`);
-
-					AddTemplateToCollection("cards", newCard);
-				} else {
-					console.log(`Could not create new card template`);
-				}
-
-				matchNumber++;
-			}
-		}
-
-		if (matchNumber == 0) {
-			SetElementInnerHTML("cards", `No matches found for '${cameraId}'`);
-		}
-	}
-}
-
 function SearchQuadrantLocation(quadrantLocation) { 
 	SetElementInnerHTML("search_value", "Search by Quadrant Location"); 
 	ToggleClassState("output_field", "hidden", false); 
@@ -67,7 +25,7 @@ function SearchQuadrantLocation(quadrantLocation) {
 					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
 					SetTemplateElementValue(newCard, "card_community_name", obj.community);
 					SetTemplateElementValue(newCard, "link_map",
-					`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+					`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 
 					AddTemplateToCollection("cards", newCard);
@@ -112,7 +70,7 @@ function SearchDetailLocation(detailLocation) {
 					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
 					SetTemplateElementValue(newCard, "card_community_name", obj.community);
 					SetTemplateElementValue(newCard, "link_map",
-					`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+					`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 					
 					AddTemplateToCollection("cards", newCard);
@@ -155,7 +113,7 @@ function SearchCommunityName(communityName) {
 					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
 					SetTemplateElementValue(newCard, "card_community_name", obj.community);
 					SetTemplateElementValue(newCard, "link_map",
-					`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+					`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 					
 					AddTemplateToCollection("cards", newCard);
@@ -418,7 +376,7 @@ function SearchAssetCode(assetCode) {
 					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);				
 					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
 					SetTemplateElementValue(newCard, "link_map",
-						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 					
 					AddTemplateToCollection("cards", newCard);
@@ -463,7 +421,7 @@ function SearchTypeNumber(typeNumber) {
 					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);				
 					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
 					SetTemplateElementValue(newCard, "link_map",
-						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 					
 					AddTemplateToCollection("cards", newCard);
@@ -511,7 +469,7 @@ function SearchTypeDescription(typeDescription) {
 					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);			
 					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
 					SetTemplateElementValue(newCard, "link_map",
-						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 					
 					AddTemplateToCollection("cards", newCard);
@@ -559,7 +517,7 @@ function SearchMaintainedBy(maintainedBy) {
 					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);				
 					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
 					SetTemplateElementValue(newCard, "link_map",
-						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						`<a href="https://www.google.com/maps/place/${obj.point.coordinates[1]},${obj.point.coordinates[0]}" target="_blank">
 						View in Google Maps</a>`);
 					
 					AddTemplateToCollection("cards", newCard);
