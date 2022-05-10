@@ -25,6 +25,12 @@
         text-shadow: 2px 1px 2px #2763da;
         text-align: center;
     }
+    form {
+        margin: 20px 30px;
+    }
+    form label {
+        padding: 5px 0;
+    }
     form span {
         font-style: italic;
         font-size: 12px;
@@ -57,18 +63,15 @@
     .prompt {
         display: none
     }
-    .camera_form,
-    .building_form {
-        margin: 20px 30px;
-    }
     .camera_form label {
         width: 130px;
-        padding: 5px 0;
     }
     .building_form label {
-        width: 112px;
-        padding: 5px 0;
-    }    
+        width: 112px;        
+    }
+    .playground_form label {
+        width: 100px;
+    }
     #output_field {
         width: 98%;
         margin: 15px auto;
@@ -92,13 +95,16 @@
     .card p {
         display: inline-block;
         margin: 0;
-        padding: 1px 0;
+        padding: 1px;
     }
     .camera_p {
         width: 82px;
     }
     .building_p {
         width: 108px;
+    }
+    .playground_p {
+        width: 101px;
     }
     .link_map {
         margin-top: 7px;
