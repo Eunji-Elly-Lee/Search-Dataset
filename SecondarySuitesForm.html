@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<title>Secondary Suites</title>
+	</head>
+
+	<body>
+        <div class="p-2 bg-dark">
+            <h2>Search Secondary Suites</h2>
+        </div>		
+
+		<form class="secondary_form">
+			<div>
+				<label for="secondary_suite_id">ID:</label>
+				<input type="text" id="secondary_suite_id" name="secondary_suite_id"
+					data-promptMessage="Please enter the id that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchID(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="address">Address:</label>
+				<input type="text" id="address" name="address"
+					data-promptMessage="Please enter the address that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchAddress(this.value)">
+				<span>(contains)</span>
+			</div>
+
+			<div>
+				<label for="community">Community:</label>
+				<input type="text" id="community" name="community" 
+					data-promptMessage="Please enter the community that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchCommunity(this.value)">
+				<span>(starts With)</span>
+			</div>
+
+			<div>
+				<label for="permit_number">Permit Number:</label>
+				<input type="text" id="permit_number" name="permit_number"
+					data-promptMessage="Please enter the permit number that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchPermitNumber(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+		</form>
+
+		<div id="output_field" class="hidden">
+			<h3 id="search_value"></h3>
+
+			<div>
+				<template id="card_template">
+					<div class="card col-md-5">
+						<div class="match_number">
+							<p>Match Number:</p>
+							<span class="card_id"></span>
+						</div>
+
+						<div>
+							<p class="secondary_p">ID:</p>
+							<span class="card_secondary_suite_id"></span>
+						</div>
+
+						<div>
+							<p class="secondary_p">Address:</p>
+							<span class="card_address"></span>
+						</div>
+
+						<div>
+							<p class="secondary_p">Community:</p>
+							<span class="card_community"></span>
+						</div>
+
+						<div>
+							<p class="secondary_p">Inspection:</p>
+							<span class="card_inspection_date"></span>
+						</div>
+
+						<div>
+							<p class="secondary_p">Completion:</p>
+							<span class="card_completion_date"></span>
+						</div>
+
+						<div>
+							<p class="secondary_p">Permit Number:</p>
+							<span class="card_permit_number"></span>
+						</div>
+							
+						<div class="link_map"></div>
+					</div>
+				</template>
+
+                <div class="row" id="cards"></div>            
+			</div>
+		</div>
+	</body>
+</html>
