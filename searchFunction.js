@@ -389,3 +389,190 @@ function SearchBuildingAddress(buildingAddress) {
 		}
 	}
 }
+
+function SearchAssetCode(assetCode) {
+	SetElementInnerHTML("search_value", "Search by Asset Code");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (assetCode && assetCode.length > 0) {
+		var searchingAssetCode; 
+		var matchNumber = 0;
+		assetCode = assetCode.toUpperCase();
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingAssetCode = obj.asset_cd;
+
+			if (searchingAssetCode == assetCode) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_asset_cd", obj.asset_cd);
+					SetTemplateElementValue(newCard, "card_asset_type", obj.asset_type);
+					SetTemplateElementValue(newCard, "card_type_description", obj.type_description);
+					SetTemplateElementValue(newCard, "card_minortype", obj.minortype);
+					SetTemplateElementValue(newCard, "card_steward", obj.steward);
+					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);				
+					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${assetCode}'`);
+		}
+	}
+}
+
+function SearchTypeNumber(typeNumber) {
+	SetElementInnerHTML("search_value", "Search by Type Number");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (typeNumber && typeNumber.length > 0) {
+		var searchingTypeNumber; 
+		var matchNumber = 0;
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingTypeNumber = obj.asset_type;
+
+			if (searchingTypeNumber == typeNumber) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_asset_cd", obj.asset_cd);
+					SetTemplateElementValue(newCard, "card_asset_type", obj.asset_type);
+					SetTemplateElementValue(newCard, "card_type_description", obj.type_description);
+					SetTemplateElementValue(newCard, "card_minortype", obj.minortype);
+					SetTemplateElementValue(newCard, "card_steward", obj.steward);
+					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);				
+					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${typeNumber}'`);
+		}
+	}
+}
+
+function SearchTypeDescription(typeDescription) {
+	SetElementInnerHTML("search_value", "Search by Type Detail");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (typeDescription && typeDescription.length > 0) {
+		var searchingTypeDescription; 
+		var matchNumber = 0;
+		typeDescription = typeDescription.toLowerCase();
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingTypeDescription = obj.type_description.toLowerCase();
+
+			var foundAt = searchingTypeDescription.indexOf(typeDescription);
+
+			if (foundAt > -1) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_asset_cd", obj.asset_cd);
+					SetTemplateElementValue(newCard, "card_asset_type", obj.asset_type);
+					SetTemplateElementValue(newCard, "card_type_description", obj.type_description);
+					SetTemplateElementValue(newCard, "card_minortype", obj.minortype);
+					SetTemplateElementValue(newCard, "card_steward", obj.steward);
+					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);			
+					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${typeDescription}'`);
+		}
+	}
+}
+
+function SearchMaintainedBy(maintainedBy) {
+	SetElementInnerHTML("search_value", "Search by Maintainer");
+	ToggleClassState("output_field", "hidden", false);
+	ClearTemplateCollection("cards");
+
+	if (maintainedBy && maintainedBy.length > 0) {
+		var searchingMaintainedBy; 
+		var matchNumber = 0;
+		maintainedBy = maintainedBy.toLowerCase();
+
+		for (var idx = 0; idx < dataSet.length; idx++) {
+			var obj = dataSet[idx];
+			searchingMaintainedBy = obj.maintained_by.toLowerCase();
+
+			var foundAt = searchingMaintainedBy.indexOf(maintainedBy);
+
+			if (foundAt > -1) {
+				var newCardId = `card-${matchNumber}`;
+				var newCard = GetNewTemplate("card_template", newCardId);
+
+				if (newCard) {
+					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
+					SetTemplateElementValue(newCard, "card_asset_cd", obj.asset_cd);
+					SetTemplateElementValue(newCard, "card_asset_type", obj.asset_type);
+					SetTemplateElementValue(newCard, "card_type_description", obj.type_description);
+					SetTemplateElementValue(newCard, "card_minortype", obj.minortype);
+					SetTemplateElementValue(newCard, "card_steward", obj.steward);
+					SetTemplateElementValue(newCard, "card_maintained_by", obj.maintained_by);				
+					SetTemplateElementValue(newCard, "card_status", obj.life_cycle_status);
+					SetTemplateElementValue(newCard, "link_map",
+						`<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" target="_blank">
+						View in Google Maps</a>`);
+					
+					AddTemplateToCollection("cards", newCard);
+				} else {
+					console.log(`Could not create new card template`);
+				}
+
+				matchNumber++;
+			}
+		}
+
+		if (matchNumber == 0) {
+			SetElementInnerHTML("cards", `No matches found for '${maintainedBy}'`);
+		}
+	}
+}
