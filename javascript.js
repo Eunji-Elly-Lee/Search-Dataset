@@ -4,7 +4,7 @@ function InitializeWebpage() {
     ToggleClassState("image_area", "hidden", false);
     ToggleClassState("content", "hidden", false);
 
-	if(document.createElement("template").content) {
+	if (document.createElement("template").content) {
 		console.log("Your browser supports templates!");
 	} else {
 		console.log("Your browser does not support templates!");
@@ -18,11 +18,11 @@ function LoadForm(url, fieldId) {
     var AJAX = new XMLHttpRequest();
 
     AJAX.onreadystatechange = function () {
-        if(AJAX.readyState == 4) {
+        if (AJAX.readyState == 4) {
             var displayField = document.getElementById(fieldId);
             
-            if(displayField && displayField.innerHTML !== undefined) {
-                switch(AJAX.status) {
+            if (displayField && displayField.innerHTML !== undefined) {
+                switch (AJAX.status) {
                     case 200:
                         var htmlFragment = ParseTextAsHTML(AJAX.responseText, "body", true);
 
@@ -68,11 +68,11 @@ function ParseTextAsHTML(rawHTML, id, stripJavaScript) {
     var returnString = "";
     var parser = new DOMParser();
 
-    if(parser) {
+    if (parser) {
         var xmlDoc = parser.parseFromString(rawHTML, "text/html");
 
-        if(xmlDoc && xmlDoc.body !== undefined && id !== undefined) {
-            switch(id) {
+        if (xmlDoc && xmlDoc.body !== undefined && id !== undefined) {
+            switch (id) {
                 case "body":
                     returnString = xmlDoc.body.innerHTML;
                     
@@ -86,7 +86,7 @@ function ParseTextAsHTML(rawHTML, id, stripJavaScript) {
                 default:
                     var XMLFragment = xmlDoc.getElementsByTagName(id);
 
-                    if(XMLFragment && XMLFragment.length > 0) {
+                    if (XMLFragment && XMLFragment.length > 0) {
                         returnString = XMLFragment[0].innerHTML;
                     } else {
                         console.log(`HTML document has an improperly closed tag such as a <br>, an <img> etc.`);
@@ -99,14 +99,14 @@ function ParseTextAsHTML(rawHTML, id, stripJavaScript) {
         console.log(`Could not parse fragment as HTML \n${rawHTML}`);
     }
 
-    if(stripJavaScript) {
+    if (stripJavaScript) {
         const scriptTagClose = '</script>';
         var startPoint = returnString.search(/<script/i);
 
-        while(startPoint > 0) {
+        while (startPoint > 0) {
             var endPoint = returnString.toLowerCase().indexOf(scriptTagClose,startPoint +2);
 
-            if(endPoint > 0){
+            if (endPoint > 0){
                 returnString = returnString.substring(0,startPoint) + returnString.substring(endPoint +scriptTagClose.length +1);
             } else {
                 returnString = returnString.substring(0,startPoint);
@@ -123,8 +123,8 @@ function LoadData(url) {
 	xhr = new XMLHttpRequest();
 
 	xhr.onreadystatechange = function () {
-        if(xhr.readyState == 4) {
-            switch(xhr.status) {
+        if (xhr.readyState == 4) {
+            switch (xhr.status) {
                 case 200:
                 dataSet = JSON.parse(xhr.responseText);
 
@@ -161,7 +161,7 @@ Async callback to our logic but .readyState == ${xhr.readyState} && .status == $
 function ToggleClassState(id, toggleClass, force) {
     var element = document.getElementById(id);
 
-    if(element) {
+    if (element) {
         element.classList.toggle(toggleClass, force);
     } else {
         console.log(`Cannot find element "${id}" to alter class "${toggleClass}"`);
@@ -171,10 +171,10 @@ function ToggleClassState(id, toggleClass, force) {
 function HasFocus(id, promptID) { 
     var inputElement = document.getElementById(id);
 
-    if(inputElement) {
+    if (inputElement) {
         var rectangleOfInput = inputElement.getBoundingClientRect(); 
 
-        if(rectangleOfInput && rectangleOfInput.top !== undefined) {
+        if (rectangleOfInput && rectangleOfInput.top !== undefined) {
             var messageText = inputElement.getAttribute("data-promptMessage");
             
             ToggleClassState(promptID, "hidden", false);
@@ -188,10 +188,10 @@ function HasFocus(id, promptID) {
 function LostFocus(id, promptID) { 
     var promptElement = document.getElementById(promptID);
 
-    if(promptElement) {
+    if (promptElement) {
         promptElement.style = "";
 
-        if(id) {
+        if (id) {
             promptElement.innerHTML = "";
         }
 
@@ -204,7 +204,7 @@ function LostFocus(id, promptID) {
 function CalculateTopPosition(promptID, rectangleOfInput, messageText) { 
     var promptElement = document.getElementById(promptID); 
 
-    if(promptElement && promptElement.innerHTML !== undefined && promptElement.style !== undefined) {        
+    if (promptElement && promptElement.innerHTML !== undefined && promptElement.style !== undefined) {        
         var rectangleOfPrompt = promptElement.getBoundingClientRect();        
         var topOffset = rectangleOfInput.top - (rectangleOfInput.height + rectangleOfPrompt.height) + window.scrollY - 170;
         var leftOffset = rectangleOfInput.left + rectangleOfInput.width + window.scrollX - 15;
@@ -221,7 +221,7 @@ function CalculateTopPosition(promptID, rectangleOfInput, messageText) {
 function SetElementInnerHTML(id, htmlFragment) {
 	var element = document.getElementById(id);
 
-	if(element && element.innerHTML !== undefined) {
+	if (element && element.innerHTML !== undefined) {
 		element.innerHTML = htmlFragment;
 	} else {
 		console.log(`Could not find element id="${id}" on the web page`);
@@ -231,14 +231,14 @@ function SetElementInnerHTML(id, htmlFragment) {
 function GetNewTemplate(templateId, newTemplateId) {
 	var template = document.getElementById(templateId); 
 
-	if(template && template.content !== undefined) {
+	if (template && template.content !== undefined) {
 		var newTemplate = null; 
 
-		for(let idx = 0; idx < template.content.childNodes.length; idx++) {
-			if(template.content.childNodes[idx].nodeType === 1) {
+		for (let idx = 0; idx < template.content.childNodes.length; idx++) {
+			if (template.content.childNodes[idx].nodeType === 1) {
 				newTemplate = template.content.childNodes[idx].cloneNode(true);
 				
-                if(newTemplate) {
+                if (newTemplate) {
 					newTemplate.setAttribute("id", newTemplateId);
 
 					break;
@@ -255,7 +255,7 @@ function GetNewTemplate(templateId, newTemplateId) {
 function SetTemplateElementValue(template, className, htmlFragment) {
 	var element = template.getElementsByClassName(className);
 
-	if(element && element.length > 0) {
+	if (element && element.length > 0) {
 		element[0].innerHTML = htmlFragment;
 	} else {
 		console.log(`Could not find element id='${className}' on the template`);
@@ -267,7 +267,7 @@ function SetTemplateElementValue(template, className, htmlFragment) {
 function ClearTemplateCollection(id) {
 	var element = document.getElementById(id);
     
-	if(element) {
+	if (element) {
 		element.innerHTML = "";
 	}
 }
