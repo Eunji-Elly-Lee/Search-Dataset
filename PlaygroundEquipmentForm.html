@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>	
+	<head>
+		<title>Playground Equipment</title>
+	</head>
+
+	<body>
+        <div class="p-2 bg-dark">
+            <h2>Search Playground Equipment</h2>
+        </div>		
+
+		<form class="playground_form">
+			<div>
+				<label for="asset_cd">Asset Code:</label>
+				<input type="text" id="asset_cd" name="asset_cd"
+					data-promptMessage="Please enter the asset code that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchAssetCode(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="type_number">Type Number:</label>
+				<input type="text" id="type_number" name="type_number"
+					data-promptMessage="Please enter the type number that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchTypeNumber(this.value)">
+				<span>(exact matchs)</span>
+			</div>
+
+			<div>
+				<label for="type_description">Type Detail:</label>
+				<input type="text" id="type_description" name="type_description" 
+					data-promptMessage="Please enter the type detail that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchTypeDescription(this.value)">
+				<span>(contains)</span>
+			</div>
+
+			<div>
+				<label for="maintained_by">Maintained By:</label>
+				<input type="text" id="maintained_by" name="maintained_by"
+					data-promptMessage="Please enter the maintainer that you want to find"
+					onfocus="HasFocus(this.id, 'prompt');" onblur="LostFocus(this.id, 'prompt');"
+					onkeyup="SearchMaintainedBy(this.value)">
+				<span>(contains)</span>
+			</div>
+		</form>
+
+		<div id="output_field" class="hidden">
+			<h3 id="search_value"></h3>
+
+			<div>
+				<template id="card_template">
+					<div class="card col-md-5">
+						<div class="match_number">
+							<p>Match Number:</p>
+							<span class="card_id"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Asset Code:</p>
+							<span class="card_asset_cd"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Asset Type:</p>
+							<span class="card_asset_type"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Type Detail:</p>
+							<span class="card_type_description"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Minor Type:</p>
+							<span class="card_minortype"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Steward:</p>
+							<span class="card_steward"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Maintained By:</p>
+							<span class="card_maintained_by"></span>
+						</div>
+
+						<div>
+							<p class="playground_p">Status:</p>
+							<span class="card_status"></span>
+						</div>
+							
+						<div class="link_map"></div>
+					</div>
+				</template>
+
+                <div class="row" id="cards"></div>            
+			</div>
+		</div>
+	</body>
+</html>
