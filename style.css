@@ -57,12 +57,16 @@
     .prompt {
         display: none
     }
-    .camera_form {
+    .camera_form,
+    .building_form {
         margin: 20px 30px;
     }
     .camera_form label {
         width: 130px;
-        display: inline-block;
+        padding: 5px 0;
+    }
+    .building_form label {
+        width: 112px;
         padding: 5px 0;
     }    
     #output_field {
@@ -92,7 +96,10 @@
     }
     .camera_p {
         width: 82px;
-    }    
+    }
+    .building_p {
+        width: 108px;
+    }
     .link_map {
         margin-top: 7px;
     }
