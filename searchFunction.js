@@ -20,8 +20,8 @@ function SearchQuadrantLocation(quadrantLocation) {
 
 				if (newCard) {
 					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
-					SetTemplateElementValue(newCard, "card_camera_id", obj.id);
-					SetTemplateElementValue(newCard, "card_detail_location", obj.description);
+					SetTemplateElementValue(newCard, "card_detail_location", obj.description.split('Direction')[0]);
+					SetTemplateElementValue(newCard, "card_direction", obj.description.slice(obj.description.split('Direction')[0].length + 11));
 					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
 					SetTemplateElementValue(newCard, "card_community_name", obj.community);
 					SetTemplateElementValue(newCard, "link_map",
@@ -65,8 +65,8 @@ function SearchDetailLocation(detailLocation) {
 
 				if (newCard) {
 					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
-					SetTemplateElementValue(newCard, "card_camera_id", obj.id);
-					SetTemplateElementValue(newCard, "card_detail_location", obj.description);
+					SetTemplateElementValue(newCard, "card_detail_location", obj.description.split('Direction')[0]);
+					SetTemplateElementValue(newCard, "card_direction", obj.description.slice(obj.description.split('Direction')[0].length + 11));
 					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
 					SetTemplateElementValue(newCard, "card_community_name", obj.community);
 					SetTemplateElementValue(newCard, "link_map",
@@ -108,8 +108,8 @@ function SearchCommunityName(communityName) {
 
 				if (newCard) {
 					SetTemplateElementValue(newCard, "card_id", (matchNumber + 1));
-					SetTemplateElementValue(newCard, "card_camera_id", obj.id);
-					SetTemplateElementValue(newCard, "card_detail_location", obj.description);
+					SetTemplateElementValue(newCard, "card_detail_location", obj.description.split('Direction')[0]);
+					SetTemplateElementValue(newCard, "card_direction", obj.description.slice(obj.description.split('Direction')[0].length + 11));
 					SetTemplateElementValue(newCard, "card_quadrant_location", obj.quadrant);
 					SetTemplateElementValue(newCard, "card_community_name", obj.community);
 					SetTemplateElementValue(newCard, "link_map",
