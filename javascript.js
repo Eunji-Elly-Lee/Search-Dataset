@@ -104,12 +104,12 @@ function ParseTextAsHTML(rawHTML, id, stripJavaScript) {
         var startPoint = returnString.search(/<script/i);
 
         while (startPoint > 0) {
-            var endPoint = returnString.toLowerCase().indexOf(scriptTagClose,startPoint +2);
+            var endPoint = returnString.toLowerCase().indexOf(scriptTagClose, startPoint +2);
 
             if (endPoint > 0){
-                returnString = returnString.substring(0,startPoint) + returnString.substring(endPoint +scriptTagClose.length +1);
+                returnString = returnString.substring(0, startPoint) + returnString.substring(endPoint + scriptTagClose.length + 1);
             } else {
-                returnString = returnString.substring(0,startPoint);
+                returnString = returnString.substring(0, startPoint);
             }
             
             startPoint = returnString.search(/<script>/i);
