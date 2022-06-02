@@ -1,7 +1,9 @@
 ![main page](/img/main_page.png)
 ![search page](/img/search_page.png)
 
-This is a simple web page designed to allows to search for data about city operations published by City of Calgary.
+This is a simple website designed to allows to search for data about city operations published by City of Calgary.
+
+#### [View Website](https://elly-search-dataset.netlify.app/)
 
 ## Features
 - Users can see the descriptions of the datasets that can be retrieved on the first page.
