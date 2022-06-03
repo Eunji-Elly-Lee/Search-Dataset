@@ -9,9 +9,11 @@ This is a simple website designed to allows to search for data about city operat
 - Users can see the descriptions of the datasets that can be retrieved on the first page.
 - When the menu is selected, an AJAX call loads the html page containing a form that allows the dataset to be searched.
 - Search results are displayed in card format, and each data provides location information through Google Maps.
+- The combination of blue and black makes it look neat and tidy
 - It is a fully responsive web page across all devices.
 
 ## Used skills
 - HTML, CSS, and Bootstrap
 - JavaScript and AJAX
 - Calling and using JSON
+- Netlify
