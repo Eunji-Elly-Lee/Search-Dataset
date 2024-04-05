@@ -7,7 +7,7 @@ This user-friendly website provides users with easy access to valuable data abou
 
 #### [View Website](https://elly-search-dataset.netlify.app/)
 
-## Features
+### Features
 
 - **Informative Overview**: Gets detailed descriptions of available datasets on the homepage, allowing users to understand the available data at a glance
 - **Dynamic Search Functionality**: Triggers an AJAX call, seamlessly loading a dedicated search form tailored to that specific data
