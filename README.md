@@ -3,7 +3,7 @@
 ![main page](/img/main_page.png)
 ![search page](/img/search_page.png)
 
-This user-friendly websiet provides users with easy access to valuable data about city operations published by the City of Calgary.
+This user-friendly website provides users with easy access to valuable data about city operations published by the City of Calgary.
 
 #### [View Website](https://elly-search-dataset.netlify.app/)
 
