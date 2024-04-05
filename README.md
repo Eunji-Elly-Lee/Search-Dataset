@@ -18,7 +18,7 @@ This user-friendly websiet provides users with easy access to valuable data abou
 
 ### Technologies Used
 
-- **Front-End Development**: HTML and CSS create a visually appealing and responsive user interface.
+- **Front-End Development**: HTML, CSS, and Bootstrap create a visually appealing and responsive user interface.
 - **JavaScript and AJAX**: Power dynamic interactions between the user interface and the server.
 - **JSON Parsing**: Enables seamless data exchange between the application and City of Calgary's open data platform.
 - **Netlify Deployment**: Guarantees efficient and reliable web hosting.
